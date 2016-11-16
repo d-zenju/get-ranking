@@ -16,9 +16,9 @@ class Yahoo:
     def __init__(self, appid):
         self.appid = appid  # appid : Your's application ID (required)
         self.url = self.xmlUrl + '?appid=' + self.appid
-
+        
+    # make request URL
     '''
-    make request URL
     input : params(dict), output : url(string)
     "params" conforms to request parameters of Yahoo Shipping API
     '''
