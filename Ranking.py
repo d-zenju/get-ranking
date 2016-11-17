@@ -16,7 +16,11 @@ class Yahoo:
     def __init__(self, appid):
         self.appid = appid  # appid : Your's application ID (required)
         self.url = self.xmlUrl + '?appid=' + self.appid
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 63ec4b6335163cddf8289012cca30e963bf40a16
     # make request URL
     '''
     input : params(dict), output : url(string)
