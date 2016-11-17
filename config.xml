@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <yahoo>
+        <appid></appid>
+    </yahoo>
+    <rakuten>
+        <applicationId></applicationId>
+    </rakuten>
+    <amazon>
+        <AWSAccessKeyID></AWSAccessKeyID>
+        <SecretAccessKey></SecretAccessKey>
+        <AssociateTag></AssociateTag>
+    </amazon>
+</config>

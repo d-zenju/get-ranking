@@ -44,9 +44,10 @@ class Yahoo:
         if 'type' in params:
             self.url += '&type=' + params['type']
 
+    # get XML data from Yahoo
     def getXML(self):
-        xml = urllib2.urlopen(self.url)
-        soup = BeautifulSoup(xml, 'lxml')
+        self.download = urllib2.urlopen(self.url)
+        self.xml = BeautifulSoup(self.download, 'lxml')
 
 
 class Rakuten:
