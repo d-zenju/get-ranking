@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import urllib
-
+import urllib2
+from bs4 import BeautifulSoup
 
 """
 class Yahoo
@@ -16,7 +16,7 @@ class Yahoo:
     def __init__(self, appid):
         self.appid = appid  # appid : Your's application ID (required)
         self.url = self.xmlUrl + '?appid=' + self.appid
-        
+
     # make request URL
     '''
     input : params(dict), output : url(string)
@@ -43,7 +43,12 @@ class Yahoo:
             self.url += '&offset=' + params['offset']
         if 'type' in params:
             self.url += '&type=' + params['type']
-        return self.url
+            
+    def getXML(self):
+        xml = urllib2.urlopen(self.url)
+        soup = BeautifulSoup(xml, 'lxml')
+        print soup
+
 
 class Rakuten:
     def __init__(self):

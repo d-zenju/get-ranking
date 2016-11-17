@@ -7,8 +7,9 @@ def main():
     params = {
         'category_id':'2494',
         'period':'daily'}
-
-    print yahoo.requestUrl(params)
+    yahoo.requestUrl(params)
+    yahoo.getXML()
+    print yahoo.url
 
 if __name__ == '__main__':
     main()
