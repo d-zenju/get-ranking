@@ -4,7 +4,7 @@ import Init
 import Ranking
 
 def main():
-    # config file pass
+    # config file pass (templatefile : config.xml)
     confpass = 'pconfig.xml'
 
     # read config (yahooKey, rakutenKey, amazonKey)
