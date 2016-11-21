@@ -11,4 +11,7 @@
         <SecretAccessKey></SecretAccessKey>
         <AssociateTag></AssociateTag>
     </amazon>
+    <category>
+        <filepath></filepath>
+    </category>
 </config>
