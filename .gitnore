@@ -1,5 +1,5 @@
 # '*.pyc' : don't upload
-*.pyc
+/*.pyc
 
 # 'pconfig.xml' : don't upload
 /pconfig.xml 
