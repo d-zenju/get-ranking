@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
+import time
 import urllib2
 from bs4 import BeautifulSoup
+import bottlenose
 
 """
 class Yahoo
@@ -46,7 +48,18 @@ class Yahoo:
 
     # get XML data from Yahoo
     def getXML(self):
-        self.download = urllib2.urlopen(self.url)
+        try:
+            self.download = urllib2.urlopen(self.url, timeout=5)
+            ret = self.download.read()
+            print 'Response:', ret
+        except urllib2.HTTPError as e:
+            print 'The server couldn\'t fulfill the request.'
+            print 'Error code: ', e.code
+        except urllib2.URLError as e:
+            print 'We failed to reach a server.'
+            print 'Reason: ', e.reason
+
+        time.sleep(1.0)
         self.xml = BeautifulSoup(self.download, 'lxml')
 
 

@@ -2,4 +2,4 @@
 *.pyc
 
 # 'pconfig.xml' : don't upload
-pconfig.xml 
+/pconfig.xml 

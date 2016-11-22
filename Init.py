@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from bs4 import BeautifulSoup
+import csv
 
 # class : for read config file
 class Config:
@@ -16,4 +17,8 @@ class Config:
             'secretaccesskey':config.amazon.secretaccesskey.contents[0],
             'associatetag':config.amazon.associatetag.contents[0]
             }
-        self.category = config.category.filepath.contents[0];
+        self.categoryFilepath = config.category.filepath.contents[0];
+
+    def readCategory(self):
+        f = open(self.categoryFilepath, 'rb')
+        self.category = csv.reader(f)
