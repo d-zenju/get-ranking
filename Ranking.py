@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import time
+import datetime
 import urllib2
 from bs4 import BeautifulSoup
 import bottlenose
+import sqlite3
 
 """
 class Yahoo
@@ -13,18 +15,19 @@ class Yahoo
 class Yahoo:
     # Request URL (XML)
     xmlUrl = 'http://shopping.yahooapis.jp/ShoppingWebService/V1/categoryRanking'
+    categoryUrl = 'http://shopping.yahooapis.jp/ShoppingWebService/V1/categorySearch'
 
     # init
     def __init__(self, appid):
         self.appid = appid  # appid : Your's application ID (required)
-        self.url = self.xmlUrl + '?appid=' + self.appid
-        
+
     # make request URL
     '''
     input : params(dict), output : url(string)
     "params" conforms to request parameters of Yahoo Shipping API
     '''
     def requestUrl(self, params):
+        self.url = self.xmlUrl + '?appid=' + self.appid
         if 'output' in params:
             self.url += '&output=' + params['output']
         if 'affiliate_type' in params:
@@ -45,22 +48,30 @@ class Yahoo:
             self.url += '&offset=' + params['offset']
         if 'type' in params:
             self.url += '&type=' + params['type']
+        print self.url
 
     # get XML data from Yahoo
     def getXML(self):
         try:
             self.download = urllib2.urlopen(self.url, timeout=5)
-            ret = self.download.read()
-            print 'Response:', ret
+            self.ret = self.download.read()
         except urllib2.HTTPError as e:
             print 'The server couldn\'t fulfill the request.'
             print 'Error code: ', e.code
         except urllib2.URLError as e:
             print 'We failed to reach a server.'
             print 'Reason: ', e.reason
+        self.xml = BeautifulSoup(self.ret, 'xml')
 
-        time.sleep(1.0)
-        self.xml = BeautifulSoup(self.download, 'lxml')
+    def saveXML(self, filepath):
+        xmlFile = open(filepath, 'wb')
+        xmlFile.write(self.ret)
+        xmlFile.close()
+
+    def insertSQL(self, sqlpath):
+        #print self.xml.RankingData
+        for RankingData in self.xml.find('Result').findAll('RankingData'):
+            print RankingData.find('Code').string
 
 
 class Rakuten:

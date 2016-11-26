@@ -18,6 +18,11 @@ class Config:
             'associatetag':config.amazon.associatetag.contents[0]
             }
         self.categoryFilepath = config.category.filepath.contents[0];
+        self.saveXml = {
+            'yahoo':config.save.yahoo.contents[0],
+            'rakuten':config.save.rakuten.contents[0],
+            'amazon':config.save.amazon.contents[0]
+        }
 
     def readCategory(self):
         f = open(self.categoryFilepath, 'rb')

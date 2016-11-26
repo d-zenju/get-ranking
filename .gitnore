@@ -3,3 +3,5 @@
 
 # 'pconfig.xml' : don't upload
 /pconfig.xml 
+
+/xml
